@@ -48,8 +48,22 @@ fi
      systemctl start mysqld
      VALIDATE $? "starting mysql..."
 
-     mysql_secure_installation --set-root-pass ExpenseApp@1 | tee -a $LOG_FILE
+
+mysql -h mysql.batch1320.online
+ -u root -pExpenseApp@1 -e 'show databases;' # to connect mysql directly from inside"
+
+ if [ $? -ne 0 ]
+ then
+    echo "$mysql root password is not setup.. setting up" &>>$LOG_FILE
+
+    mysql_secure_installation --set-root-pass ExpenseApp@1 | tee -a $LOG_FILE
      VALIDATE $? "setting the root password..." 
+
+    else
+        echo -e "$mysql root password is already setup.. $R skipping $N" | tee -a $LOG_FILE
+
+fi
+     
 
 
 
