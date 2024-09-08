@@ -49,8 +49,7 @@ fi
      VALIDATE $? "starting mysql..."
 
 
-mysql -h mysql.batch1320.online
- -u root -pExpenseApp@1 -e 'show databases;' # to connect mysql directly from inside"
+mysql -h mysql.batch1320.online -u root -pExpenseApp@1 -e 'show databases;' # to connect mysql directly from inside"
 
  if [ $? -ne 0 ]
  then
