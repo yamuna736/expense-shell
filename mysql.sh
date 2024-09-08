@@ -39,14 +39,17 @@ fi
     echo "script started executing..$(date)" | tee -a $LOG_FILE # tee -a shows logs in multiple places
      CHECK_ROOT
 
-     dnf install mysql-server -y  
-     VALIDATE $? "installing mysql.. success" 
+     dnf install mysql-server -y &>>$LOG_FILE
+     VALIDATE $? "installing mysql" 
 
-     systemctl enable mysqld  
-     VALIDATE $? "enabling mysql.. success" 
+     systemctl enable mysqld &>>$LOG_FILE 
+     VALIDATE $? "enabling mysql" 
 
-     systemctl start mysqld 
-     VALIDATE $? "starting mysql... success"
+     systemctl start mysqld  &>>$LOG_FILE
+     VALIDATE $? "starting mysql"
+
+     systemctl status mysqld &>>$LOG_FILE
+     VALIDATE $? "CHECKING STATUS MYSQL"
 
 
 mysql -h mysql.batch1320.online -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE # to connect mysql directly from inside"
