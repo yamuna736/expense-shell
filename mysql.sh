@@ -39,17 +39,17 @@ fi
     echo "script started executing..$(date)" | tee -a $LOG_FILE # tee -a shows logs in multiple places
      CHECK_ROOT
 
-     dnf install mysql-server -y
-     validate $? "installing mysql.." | tee -a $LOG_FILE
+     dnf install mysql-server -y | tee -a $LOG_FILE
+     validate $? "installing mysql.." 
 
-     systemctl enable mysqld
-     validate $? "enabling mysql.." | tee -a $LOG_FILE
+     systemctl enable mysqld | tee -a $LOG_FILE
+     validate $? "enabling mysql.." 
 
      systemctl start mysqld
      validate $? "starting mysql..."
 
-     mysql_secure_installation --set-root-pass ExpenseApp@1
-     validate $? "setting the root password..." | tee -a $LOG_FILE
+     mysql_secure_installation --set-root-pass ExpenseApp@1 | tee -a $LOG_FILE
+     validate $? "setting the root password..." 
 
 
 
