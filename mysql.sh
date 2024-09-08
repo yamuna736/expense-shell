@@ -40,16 +40,16 @@ fi
      CHECK_ROOT
 
      dnf install mysql-server -y | tee -a $LOG_FILE
-     validate $? "installing mysql.." 
+     VALIDATE $? "installing mysql.." 
 
      systemctl enable mysqld | tee -a $LOG_FILE
-     validate $? "enabling mysql.." 
+     VALIDATE $? "enabling mysql.." 
 
      systemctl start mysqld
-     validate $? "starting mysql..."
+     VALIDATE $? "starting mysql..."
 
      mysql_secure_installation --set-root-pass ExpenseApp@1 | tee -a $LOG_FILE
-     validate $? "setting the root password..." 
+     VALIDATE $? "setting the root password..." 
 
 
 
