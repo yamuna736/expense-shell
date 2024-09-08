@@ -40,13 +40,13 @@ fi
      CHECK_ROOT
 
      dnf install mysql-server -y | tee -a $LOG_FILE
-     VALIDATE $? "installing mysql.." 
+     VALIDATE $? "installing mysql.. success" 
 
      systemctl enable mysqld | tee -a $LOG_FILE
-     VALIDATE $? "enabling mysql.." 
+     VALIDATE $? "enabling mysql.. success" 
 
-     systemctl start mysqld
-     VALIDATE $? "starting mysql..."
+     systemctl start mysqld &>>$LOG_FILE
+     VALIDATE $? "starting mysql... success"
 
 
 mysql -h mysql.batch1320.online -u root -pExpenseApp@1 -e 'show databases;' # to connect mysql directly from inside"
