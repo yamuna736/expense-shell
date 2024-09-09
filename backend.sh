@@ -43,7 +43,7 @@ fi
     dnf module enable nodejs:20 -y &>>$LOG_FILE
     VALIDATE $? "Enabling te nodejs... success"
 
-    dnf install nodejs -y &>>$LOG_FILE
+    dnf install nodejs -y&>>$LOG_FILE
     VALIDATE $? "insatlling nodejs... success"
 
     id expense &>>$LOG_FILE #user there are not checking with ID
@@ -64,5 +64,5 @@ fi
 
         cd /app
         rm -rf /app/* #remove the existing code and download neww code
-        unzip /tmp/backend.zip
+        unzip /tmp/backend.zip &>>$LOG_FILE
         VALIDATE $? "Extracting backend Apllication"
