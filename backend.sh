@@ -49,7 +49,7 @@ fi
     id expense &>>$LOG_FILE #user there are not checking with ID
     if [ $? -ne 0 ]
     then
-        echo "$user is not created... creating"
+        echo "$user is not created... creating" | tee -a $LOG_FILE
         useradd expense
         VALIDATE $? "adding the user.."
     else
@@ -59,5 +59,5 @@ fi
         mkdir -p /app
         VALIDATE $? "creating a app directory..."
 
-        curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+        curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOG_FILE
         VALIDATE $? "Downloading backend Apllication"
