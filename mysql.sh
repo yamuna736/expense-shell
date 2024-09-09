@@ -25,7 +25,7 @@ then
 fi 
     }
     VALIDATE(){
-    if [ $1 -ne 0 ]
+    if [ $1 -ne 0 ] # $1? values will come into $1
     then
         echo -e "$2 is.. $R failed $N" | tee -a $LOG_FILE
         exit 1
