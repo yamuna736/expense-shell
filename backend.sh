@@ -46,6 +46,7 @@ fi
     dnf install nodejs -y &>>$LOG_FILE
     VALIDATE $? "insatlling nodejs... success"
 
+    id expense &>>$LOG_FILE #user there are not checking with ID
     if [ $? -ne 0 ]
     then
         echo "$user is not created... creating"
@@ -53,4 +54,10 @@ fi
         VALIDATE $? "adding the user.."
     else
         echo -e "$user is already existed..$R skippimg $N"
+
     fi
+        mkdir -p /app
+        VALIDATE $? "creating a app directory...
+
+        curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+        VALIDATE $? "Downloading backend Apllication"
