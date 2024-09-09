@@ -45,3 +45,6 @@ fi
 
     dnf install nodejs -y &>>$LOG_FILE
     VALIDATE $? "insatlling nodejs... success"
+
+    useradd expense
+    VALIDATE $? "adding the user.."
