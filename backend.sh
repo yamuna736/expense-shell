@@ -66,3 +66,15 @@ fi
         rm -rf /app/* #remove the existing code and download neww code
         unzip /tmp/backend.zip &>>$LOG_FILE
         VALIDATE $? "Extracting backend Apllication"
+
+        npm install &>>$LOG_FILE
+        cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service
+        # pwd user copy and copying the backend service for connecting mysql
+        #check with ls -l /home/ec2-user/expense-shell/backend.service
+
+        # load data before running the backend
+
+        dnf install mysql -y &>>$LOG_FILE
+        VALIDATE $? "installing MYSQL Client"
+
+        mysql -h mysql.batch1320.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
