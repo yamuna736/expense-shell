@@ -52,5 +52,5 @@ fi
         useradd expense
         VALIDATE $? "adding the user.."
     else
-        echo "$user is already existed..$R skippimg $N"
+        echo -e "$user is already existed..$R skippimg $N"
     fi
