@@ -81,7 +81,9 @@ fi
         # sql schema will be in backend : cat /app/schema/backend.sql
         VALIDATE $? "shchema loading.."
 
+        
         systemctl daemon-reload &>>$LOG_FILE
+        echo "I am at Demon reloading"
         VALIDATE $? "Daemon relaod"
 
 
