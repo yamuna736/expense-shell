@@ -77,9 +77,7 @@ fi
         dnf install mysql -y &>>$LOG_FILE
         VALIDATE $? "installing MYSQL Client"
 
-        mysql -h mysql.batch1320.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
-        
-        # sql schema will be in backend : cat /app/schema/backend.sql
+        mysql -h mysql.batch1320.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE # sql schema will be in backend : cat /app/schema/backend.sql
         VALIDATE $? "shchema loading.."
 
         
