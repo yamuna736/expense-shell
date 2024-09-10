@@ -78,7 +78,7 @@ fi
         VALIDATE $? "installing MYSQL Client"
 
         mysql -h mysql.batch1320.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
-        echo "I am at sql reloading"
+        
         # sql schema will be in backend : cat /app/schema/backend.sql
         VALIDATE $? "shchema loading.."
 
